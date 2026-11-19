@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Views.AsyncDemoPage"
+             xmlns:vm="clr-namespace:ViewModels"
+             x:DataType="vm:AsyncDemoViewModel"
+             FlowDirection="RightToLeft"
+             Title="{Binding Title}">
+
+    <VerticalStackLayout Padding="30" Spacing="20" VerticalOptions="Center">
+
+        <Button Text="חזרה לדף הבית" 
+                Command="{Binding GoHomeCommand}" 
+                BackgroundColor="Gray" />
+
+        <Label Text="הדגמת אסינכרוניות מול סינכרוניות" 
+               FontSize="24" 
+               FontAttributes="Bold" 
+               HorizontalOptions="Center"
+               HorizontalTextAlignment="Center" />
+
+        <!-- תיבת טקסט לבדיקת תקיעת המסך -->
+        <Entry Placeholder="נסה להקליד כאן בזמן שהפעולה רצה..." 
+               HeightRequest="48" />
+
+        <!-- פס התקדמות -->
+        <ProgressBar Progress="{Binding ProgressValue}" 
+                     ProgressColor="Green"
+                     HeightRequest="12" />
+
+        <Label Text="{Binding StatusMessage}" 
+               FontSize="16" 
+               HorizontalOptions="Center"
+               HorizontalTextAlignment="Center" />
+
+        <!-- כפתור הרצה אסינכרונית (תקין) -->
+        <Button Text="הפעל אסינכרונית (async / await)" 
+                Command="{Binding StartAsyncCommand}" 
+                IsEnabled="{Binding IsNotLoading}"
+                BackgroundColor="Green"
+                TextColor="White"
+                HeightRequest="50" />
+
+        <!-- כפתור הרצה סינכרונית (תוקע) -->
+        <Button Text="הפעל סינכרונית (Thread.Sleep - תוקע)" 
+                Command="{Binding StartSyncCommand}" 
+                IsEnabled="{Binding IsNotLoading}"
+                BackgroundColor="#D9534F"
+                TextColor="White"
+                HeightRequest="50" />
+
+    </VerticalStackLayout>
+</ContentPage>
