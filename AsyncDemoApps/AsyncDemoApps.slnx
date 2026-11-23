@@ -1,3 +1,6 @@
 <Solution>
-  <Project Path="AsyncDemoApp/AsyncDemoApp.csproj" />
+  <Project Path="AsyncConsoleApp/AsyncConsoleApp.csproj" Id="e3af3c27-f53a-4c1d-8619-358f47266592" />
+  <Project Path="AsyncDemoApp/AsyncDemoApp.csproj">
+    <Deploy Solution="Debug|*" />
+  </Project>
 </Solution>

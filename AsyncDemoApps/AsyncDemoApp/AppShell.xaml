@@ -22,4 +22,11 @@
             Route="AsyncDemoPage" />
         </FlyoutItem>
 
+    <FlyoutItem Title="Tasks">
+        <ShellContent
+            Title="Tasks"
+            ContentTemplate="{DataTemplate views:TasksPage}"
+            Route="TasksPage" />
+    </FlyoutItem>
+
 </Shell>

@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
+using ViewModels;
+using Views;
 
 namespace AsyncDemoApp
 {
@@ -14,6 +16,9 @@ namespace AsyncDemoApp
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
+
+            builder.Services.AddTransient<TasksViewModel>();
+            builder.Services.AddTransient<TasksPage>();
 
 #if DEBUG
     		builder.Logging.AddDebug();

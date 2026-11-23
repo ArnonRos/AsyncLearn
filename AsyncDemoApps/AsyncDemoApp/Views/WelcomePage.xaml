@@ -19,5 +19,9 @@
                 Command="{Binding NavigateToAsyncDemoCommand}"
                 HeightRequest="50" />
 
+        <Button Text="משימות אסינכרוניות דינאמיות"
+                Command="{Binding NavigateToTasksCommand}"
+                HeightRequest="50" />
+
     </VerticalStackLayout>
 </ContentPage>

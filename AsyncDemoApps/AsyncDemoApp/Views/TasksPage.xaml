@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Views.TasksPage"
+             xmlns:vm="clr-namespace:ViewModels"
+             x:DataType="vm:TasksViewModel"
+             FlowDirection="RightToLeft"
+             Title="{Binding Title}">
+
+    <Grid RowDefinitions="Auto,Auto,Auto,Auto,*" Padding="20" RowSpacing="12">
+
+        <Button Grid.Row="0"
+                Text="חזרה לדף הבית"
+                Command="{Binding GoHomeCommand}"
+                BackgroundColor="Gray" />
+
+        <Grid Grid.Row="1" ColumnDefinitions="*,*,*" ColumnSpacing="10">
+            <Button Grid.Column="0"
+                    Text="התחל משימה"
+                    Command="{Binding StartTaskCommand}"
+                    BackgroundColor="Green"
+                    TextColor="White"
+                    HeightRequest="50" />
+
+            <Button Grid.Column="1"
+                    Text="בטל הכל"
+                    Command="{Binding CancelAllCommand}"
+                    BackgroundColor="#F0AD4E"
+                    TextColor="White"
+                    HeightRequest="50" />
+
+            <Button Grid.Column="2"
+                    Text="נקה הכל"
+                    Command="{Binding ClearAllCommand}"
+                    BackgroundColor="#D9534F"
+                    TextColor="White"
+                    HeightRequest="50" />
+        </Grid>
+
+        <Label Grid.Row="2"
+               Text="{Binding CompletedTasksCount, StringFormat='משימות שהסתיימו בהצלחה: {0}'}"
+               FontSize="18"
+               FontAttributes="Bold"
+               HorizontalOptions="Center" />
+
+        <BoxView Grid.Row="3" HeightRequest="1" Color="Gray" />
+
+        <CollectionView Grid.Row="4"
+                        ItemsSource="{Binding Tasks}"
+                        SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="vm:TaskItemViewModel">
+                    <Grid ColumnDefinitions="*,Auto"
+                          RowDefinitions="Auto,Auto"
+                          ColumnSpacing="10"
+                          Padding="0,8">
+
+                        <Label Grid.Row="0"
+                               Grid.Column="0"
+                               Text="{Binding StatusText}"
+                               FontSize="16" />
+
+                        <ProgressBar Grid.Row="1"
+                                     Grid.Column="0"
+                                     Progress="{Binding Progress}"
+                                     ProgressColor="Green"
+                                     VerticalOptions="Center" />
+
+                        <Button Grid.Row="1"
+                                Grid.Column="1"
+                                Text="בטל"
+                                Command="{Binding CancelCommand}"
+                                IsEnabled="{Binding IsCancelEnabled}" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </Grid>
+</ContentPage>
